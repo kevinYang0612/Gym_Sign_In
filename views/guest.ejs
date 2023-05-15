@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pump Iron Sign Up</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body onload="display_ct()">
+    <div id = "image"><img src="/image/pump_iron.png" alt=""></div>
+
+    <div class = "box" id = "heading">
+        <h1>Welcome to Pump Iron Gym</h1>
+        <p>Date and Time: <span id = "datetime"></span></p>
+    </div>
+
+    <div class="box">
+        <h3>Sign in sheet:</h3>
+        <% for (var i = 0; i < guestsName.length; i++) { %>
+            <div class="item">
+                <p><%= guestsName[i]; %></p><p><%= timeSignIn[i]; %></p>
+            </div>
+            <% } %>
+        <form action="/" method="post" class="item">
+            <label for = "firstname">First Name</label>
+            <input type="text" id = "firstname" placeholder="firstname" name = "firstname" autocomplete="off">
+            <label for = "lastname">Last Name</label>
+            <input type="text" id = "lastname" placeholder="lastname" name = "lastname">
+            <button type="submit" name="button">+</button>
+        </form>
+
+    </div>
+
+    <script type="text/javascript">
+        function display_c()
+        {
+            let refresh=1000; // Refresh rate in milli seconds
+            mytime = setTimeout('display_ct()',refresh);
+        }
+        function display_ct()
+        {
+            let x = new Date();
+            let options = {day: "2-digit", weekday: "short", year: "numeric",
+                month: "numeric", hour: "numeric", minute: "numeric", second: "numeric", hour12: false}
+            document.getElementById('datetime').innerHTML = x.toLocaleString("en-US", options);
+            display_c();
+        }
+    </script>
+
+
+
+</body>
+</html>
